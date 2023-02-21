@@ -5,6 +5,14 @@ const { default: mongoose } = require("mongoose");
 const { rootRouter } = require("./routers");
 
 dotenv.config();
+const cors = require('cors')
+const corsOptions = {
+  origin: '*',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
 mongoose.set("strictQuery", true);
 const connect = async () => {
   try {
