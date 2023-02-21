@@ -15,12 +15,13 @@ const connect = async () => {
   }
 };
 
-connect();
+
 app.use(express.json());
 app.use("/api/v1", rootRouter)
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected");
 });
+connect();
 const port = 8069 || process.env.PORT;
 app.listen(port, () => {
   console.log(`App run on http://localhost:${port}/api/v1`);
