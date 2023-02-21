@@ -17,10 +17,11 @@ const connect = async () => {
 
 
 app.use(express.json());
-app.use("/api/v1", rootRouter)
+
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected");
 });
+app.use("/api/v1", rootRouter)
 connect();
 const port = 8069 || process.env.PORT;
 app.listen(port, () => {
